@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arithmetic Speed Drill</title>
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+</head>
+<body>
+  <!-- Sign In Page -->
+  <div id="sign-in-page" class="container">
+    <h1>Arithmetic Speed Drill</h1>
+    <h2>Sign In</h2>
+    <div>
+      <!-- Users sign in with email -->
+      <input type="email" id="username" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <p id="sign-in-error" class="hidden" style="color: red;"></p>
+      <button id="sign-in-button">Sign In</button>
+      <button id="create-account-button">Create Account</button>
+    </div>
+  </div>
+  
+  <!-- Create Account Page -->
+  <div id="create-account-page" class="container hidden">
+    <h1>Arithmetic Speed Drill</h1>
+    <h2>Create Account</h2>
+    <div>
+      <!-- In addition to email, we now capture a username -->
+      <input type="text" id="username-input" placeholder="Username" required>
+      <input type="email" id="new-email" placeholder="Email" required>
+      <input type="password" id="new-password" placeholder="Password" required>
+      <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+      <p id="create-account-error" class="hidden" style="color: red;"></p>
+      <button id="submit-account-button">Create Account</button>
+      <button id="back-to-signin-button">Back to Sign In</button>
+    </div>
+  </div>
+  
+  <!-- Menu Page -->
+  <div id="menu-page" class="container hidden">
+    <h1>Arithmetic Speed Drill</h1>
+    <h2>Welcome, <span id="user-welcome"></span>!</h2>
+    <div style="text-align: center;">
+      <button id="start-game-button">Start Game</button>
+      <button id="view-leaderboard-button">View Leaderboard</button>
+      <button id="view-stats-button">View Your Stats</button>
+      <button id="sign-out-button">Sign Out</button>
+    </div>
+  </div>
+  
+  <!-- Game Page -->
+  <div id="game-page" class="hidden">
+    <div class="game-header">
+      <div>Seconds left: <span id="timer">120</span></div>
+      <div>Score: <span id="current-score">0</span></div>
+    </div>
+    <div class="problem-container">
+      <div class="problem" id="problem-container">
+        <span id="problem-text">2 × 52 =</span>
+        <input type="number" id="answer-input" autofocus>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Game Over Page -->
+  <div id="game-over-page" class="container hidden">
+    <h1>Game Over!</h1>
+    <div style="text-align: center; font-size: 24px; margin: 20px 0;">
+      Final Score: <span id="final-score">0</span>
+    </div>
+    <div class="user-stats">
+      <h2>Your Last 5 Games</h2>
+      <div id="user-history"></div>
+    </div>
+    <h2>Leaderboard</h2>
+    <table class="leaderboard" id="mini-leaderboard">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Player</th>
+          <th>Score</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="mini-leaderboard-body">
+        <!-- Leaderboard entries will be added here -->
+      </tbody>
+    </table>
+    <div style="text-align: center; margin-top: 20px;">
+      <button id="play-again-button">Play Again</button>
+      <button id="back-to-menu-button">Back to Menu</button>
+    </div>
+  </div>
+  
+  <!-- Leaderboard Page -->
+  <div id="leaderboard-page" class="container hidden">
+    <h1>Leaderboard</h1>
+    <table class="leaderboard" id="full-leaderboard">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Player</th>
+          <th>Score</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="full-leaderboard-body">
+        <!-- Leaderboard entries will be added here -->
+      </tbody>
+    </table>
+    <div style="text-align: center; margin-top: 20px;">
+      <button id="leaderboard-back-button">Back to Menu</button>
+    </div>
+  </div>
+  
+  <!-- Stats Page -->
+  <div id="stats-page" class="container hidden">
+    <h1>Your Statistics</h1>
+    <div class="user-stats" id="detailed-stats">
+      <!-- User stats will be added here -->
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+      <button id="stats-back-button">Back to Menu</button>
+    </div>
+  </div>
+  
+  <script src="app.js"></script>
+</body>
+</html>
